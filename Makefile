@@ -165,7 +165,7 @@ cross-newlib: cross-binutils cross-gcc newlib-$(CS_BASE)/ newlibpatch
 	--disable-newlib-supplied-syscalls --disable-libgloss --disable-nls \
 	--disable-shared --enable-newlib-io-long-long --enable-target-optspace \
 	--enable-newlib-multithread --enable-newlib-reent-small \
-	--disable-newlib-atexit-alloc && \
+	--disable-newlib-atexit-alloc --disable-newlib-io-float && \
 	$(MAKE) -j$(PROCS) CFLAGS_FOR_TARGET=$(NEWLIB_FLAGS) CCASFLAGS=$(NEWLIB_FLAGS) && \
 	$(MAKE) install
 
