@@ -118,7 +118,7 @@ cross-binutils: binutils-$(CS_BASE)/
 
 CFLAGS_FOR_TARGET="-ffunction-sections -fdata-sections -fomit-frame-pointer \
 				  -DPREFER_SIZE_OVER_SPEED -D__OPTIMIZE_SIZE__ -g -Os \
-				  -fshort-wchar -fno-unroll-loops -mabi=aapcs"
+				  -fshort-wchar -fno-unroll-loops -mabi=aapcs -fno-exceptions"
 cross-gcc: cross-binutils gcc-$(GCC_VERSION)-$(CS_BASE)/ multilibbash gcc-optsize-patch
 	mkdir -p build/gcc && cd build/gcc && \
 	pushd ../../gcc-$(GCC_VERSION)-$(CS_BASE) ; \
