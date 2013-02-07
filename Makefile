@@ -11,7 +11,7 @@ LOCAL_SOURCE = $(LOCAL_BASE).src.tar.bz2
 SOURCE_URL = http://www.codesourcery.com/sgpp/lite/arm/portal/package7812/public/arm-none-eabi/$(LOCAL_SOURCE)
 MD5_CHECKSUM = 0ab992015a71443efbf3654f33ffc675
 
-PREFIX=/opt/devel/tools/cctc/vendor/cs/arm-$(CS_VERSION)-hugovincent-67f6a93b9f5a5e21abc00cff63f4c09ce312f270
+PREFIX:=/opt/devel/tools/cctc/vendor/cs/arm-$(CS_VERSION)-$(shell git rev-parse HEAD)
 PATH+=:$(PREFIX)/bin
 
 install-cross: cross-binutils cross-gcc cross-g++ cross-newlib cross-gdb
