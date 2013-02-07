@@ -108,6 +108,8 @@ cross-gcc: cross-binutils gcc-$(GCC_VERSION)-$(CS_BASE)/ multilibbash gcc-optsiz
 	--disable-libunwind-exceptions --disable-libffi --enable-extra-sgxxlite-multilibs \
 	--enable-libstdcxx-allocator=malloc --enable-lto \
 	--enable-cxx-flags=$(CFLAGS_FOR_TARGET) \
+	--with-gmp=$(PREFIX) --with-mpfr=$(PREFIX) --with-mpc=$(PREFIX) \
+	--with-libelf=/opt/brew/Cellar/libelf/0.8.13 \
 	CFLAGS_FOR_TARGET=$(CFLAGS_FOR_TARGET) && \
 	$(MAKE) -j$(PROCS) && \
 	$(MAKE) installdirs install-target && \
@@ -122,6 +124,8 @@ cross-g++: cross-binutils cross-gcc cross-newlib gcc-$(GCC_VERSION)-$(CS_BASE)/ 
 	--disable-libunwind-exceptions --disable-libffi --enable-extra-sgxxlite-multilibs \
 	--enable-libstdcxx-allocator=malloc --enable-lto \
 	--enable-cxx-flags=$(CFLAGS_FOR_TARGET) \
+	--with-gmp=$(PREFIX) --with-mpfr=$(PREFIX) --with-mpc=$(PREFIX) \
+	--with-libelf=/opt/brew/Cellar/libelf/0.8.13 \
 	CFLAGS_FOR_TARGET=$(CFLAGS_FOR_TARGET) && \
 	$(MAKE) -j$(PROCS) && \
 	$(MAKE) installdirs install-target && \
