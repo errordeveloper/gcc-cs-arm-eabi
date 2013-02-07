@@ -58,7 +58,8 @@ gmp: gmp-$(CS_BASE)/
 	pushd ../../gmp-$(CS_BASE) ; \
 	make clean ; \
 	popd ; \
-	../../gmp-$(CS_BASE)/configure --disable-shared && \
+	../../gmp-$(CS_BASE)/configure --prefix=$(PREFIX) \
+	  --enable-cxx --build=x86_64-apple-darwin --disable-shared && \
 	$(MAKE) -j$(PROCS) all && \
 	$(MAKE) install
 
@@ -67,7 +68,8 @@ mpc: mpc-$(MPC_VERSION)/
 	pushd ../../mpc-$(MPC_VERSION) ; \
 	make clean ; \
 	popd ; \
-	../../mpc-$(MPC_VERSION)/configure --disable-shared && \
+	../../mpc-$(MPC_VERSION)/configure --prefix=$(PREFIX) \
+	  --with-gmp=$(PREFIX) --with-mpfr=$(PREFIX) --build=x86_64-apple-darwin --disable-shared && \
 	$(MAKE) -j$(PROCS) all && \
 	$(MAKE) install
 
@@ -76,7 +78,9 @@ mpfr: gmp mpfr-$(CS_BASE)/
 	pushd ../../mpfr-$(CS_BASE) ; \
 	make clean ; \
 	popd ; \
-	../../mpfr-$(CS_BASE)/configure LDFLAGS="-Wl,-search_paths_first" --disable-shared && \
+	../../mpfr-$(CS_BASE)/configure --prefix=$(PREFIX) \
+	  LDFLAGS="-Wl,-search_paths_first" \
+	  --with-gmp=$(PREFIX) --build=x86_64-apple-darwin --disable-shared && \
 	$(MAKE) -j$(PROCS) all && \
 	$(MAKE) install
 
